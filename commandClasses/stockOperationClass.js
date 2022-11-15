@@ -1,10 +1,7 @@
-const portfolio = require("./portfolio");
-
-class stockOperation extends portfolio {
+class stockOperation {
   addStock(funds, fundName, stockName) {
     const matchedFund = funds.find((fund) => fund.name === fundName);
     matchedFund.stocks.push(stockName);
-    console.log(matchedFund);
   }
 }
 

@@ -1,6 +1,4 @@
-const portfolio = require("./portfolio");
-
-class overlapClass extends portfolio {
+class overlapClass {
   #calculateOverlap(stock1, stock2) {
     const sizeOfFund1 = stock1.length;
     const sizeOfFund2 = stock2.length;
@@ -19,13 +17,11 @@ class overlapClass extends portfolio {
     return overlap_value.toFixed(2);
   }
 
-  getOverlap(userPortfolio, overlapFund) {
-    const overlap = [];
-    console.log(userPortfolio);
-    this.portfolio.forEach((fund) => {
-      overlap.push(this.#calculateOverlap(fund.stocks, overlapFund.stocks));
+  getOverlap(user, overlapFund) {
+    user.portfolio.portfolio.forEach((fund) => {
+      const overlap = this.#calculateOverlap(fund.stocks, overlapFund.stocks);
+      console.log(`${overlapFund.name} ${fund.name} ${overlap}%`);
     });
-    return overlap;
   }
 }
 

@@ -1,14 +1,12 @@
-const portfolioClass = require("./portfolio");
-
-class createPortfolio extends portfolioClass {
+class createPortfolio {
   #getFund(fundName, funds) {
     const matchedFund = funds.find((fund) => fund.name === fundName);
     return matchedFund;
   }
 
-  addFunds(fundsNameArray, funds) {
+  addFunds(user, fundsNameArray, funds) {
     fundsNameArray.forEach((fundName) => {
-      this.portfolio.push(this.#getFund(fundName, funds));
+      user.portfolio.portfolio.push(this.#getFund(fundName, funds));
     });
   }
 }

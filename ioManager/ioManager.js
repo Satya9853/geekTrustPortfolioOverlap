@@ -12,7 +12,9 @@ class ioManager {
 
   getParsedCommand(commandString) {
     const commandObject = {};
-    const [command, ...values] = commandString.split(" ");
+    const [command, ...values] = commandString
+      .replace(/(\r\n|\n|\r)/gm, "")
+      .split(" ");
     commandObject[command] = values;
     return commandObject;
   }
@@ -23,10 +25,9 @@ class ioManager {
     return funds;
   }
 
-  async getStocksAsync(stockName, source_to_file) {
-    let funds = await this.readFundsAsync(source_to_file);
-    let stock = await funds.find((fund) => stockName === fund.name);
-    return stock;
+  getFund(fundName, funds) {
+    let matchedFund = funds.find((fund) => fundName[0] === fund.name);
+    return matchedFund;
   }
 }
 
