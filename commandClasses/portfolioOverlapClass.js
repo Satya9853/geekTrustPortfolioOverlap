@@ -1,4 +1,7 @@
+// this class is for calculating the overlap of funds
+
 class overlapClass {
+  // this takes two list of stocks and uses a hashmap to find the common stocks and returns the overlap value
   #calculateOverlap(stock1, stock2) {
     const sizeOfFund1 = stock1.length;
     const sizeOfFund2 = stock2.length;
@@ -17,6 +20,7 @@ class overlapClass {
     return overlap_value.toFixed(2);
   }
 
+  //this is a getter method to send overlap value
   getOverlap(user, overlapFund) {
     user.portfolio.portfolio.forEach((fund) => {
       const overlap = this.#calculateOverlap(fund.stocks, overlapFund.stocks);

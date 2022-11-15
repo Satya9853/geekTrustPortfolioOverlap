@@ -15,12 +15,12 @@ fs.readFile(filename, "utf8", (err, data) => {
   inputLines = data.toString().split("\n");
 });
 
-// creating the ioManager Object(input-output manager)
-ioManager = new ioManagerClass();
-
 const main = async () => {
   // populating the json file at every run of main function to always have the updated data
-  await populate();
+  // await populate(); if you want to repopulate your data with updated data then uncomment this
+
+  // creating the ioManager Object(input-output manager)
+  ioManager = new ioManagerClass();
 
   // getting the funds data
   funds = await ioManager.readFundsAsync(process.env.funds_input_source);
@@ -28,7 +28,7 @@ const main = async () => {
   // initializing portfolio of a user
   const user = new userClass();
 
-  // parsing the input command and getting return as an object
+  // parsing the input command and getting return as an object of commands as key and fund name as value
   inputLines.forEach((input) => {
     const commandsObject = ioManager.getParsedCommand(input);
     executingCommands(user, commandsObject, funds); //executing the commands
